@@ -8,8 +8,8 @@ import { RoomList } from '../../Room';
 import { NgForm } from '@angular/forms';
 
 
-// Create a mock class that extends the service class
-// should be in a separate and reusable class I expect
+// Create a class that mocks the service class
+// should be in a separate and reusable class file I expect
 class MockRoomsService /*extends RoomsService*/ {
   // Override the method or property that you want to mock
    getRooms() : Observable<RoomList[]> {   
@@ -33,18 +33,7 @@ class MockRoomsService /*extends RoomsService*/ {
   addRoom(room: RoomList) : Observable<RoomList[]>{   
     return new Observable<RoomList[]>(stream=>{
       stream.next(
-        [
-          {
-            roomNumber: 3,
-            roomType: "roomType",
-            amenities: "a lovely bathroom",
-            price: 666,
-            photo: "no valid url",
-            checkInTime : new Date("2023-12-15"),
-            checkOutTime: new Date("2023-12-16")
-          },
-          room // include the newly added room in the list
-        ]
+        [room] // return the newly added room within a list
       ); stream.complete;
     });
   }
@@ -78,12 +67,10 @@ describe('RoomsAddComponent', () => {
       }
     };
     let resetCalled : Boolean = false;
-    testForm.reset = () => { resetCalled = true;}; // mock the reset method
+    testForm.reset = () => { resetCalled = true;}; // mock the reset method, which we know the component calls
 
     component.addRoom(testForm);
     expect(component.successMessage).toBe('room added');
     expect(resetCalled).toBe(true);
-    
-
   });
 });
