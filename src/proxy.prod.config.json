@@ -1,0 +1,17 @@
+{
+    "/WeatherForecast" : {
+      "target": "http://localhost:8080",
+      "changeOrigin" : true,
+      "secure": false
+    },
+    "/rooms" : {
+        "target": "http://localhost:8080",
+        "changeOrigin" : true,
+        "secure": false
+    },
+    "/comments" : {
+      "target": "http://localhost:8080",
+      "changeOrigin" : true,
+      "secure": false
+  }
+}

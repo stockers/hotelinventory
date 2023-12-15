@@ -14,7 +14,7 @@ Total bytes loaded: {{totalBytes}}
 
 <div *ngIf="rooms.availableRooms ?? 0 > 0" [ngStyle]="{'color': rooms.availableRooms > 2 ? 'green' : ''}">
     Rooms List: {{rooms.availableRooms}}
-{{roomList | slice :2:3 | json}}
+{{this.roomList | slice :0:1 | json}}
 
 <div *ngIf="selectedRoom">
     {{selectedRoom | json}}

@@ -8,7 +8,7 @@ import { RoomList } from '../Room';
 export class FilterPipe implements PipeTransform {
 
   transform(rooms: RoomList[], price : number): RoomList[] {
-    return rooms.filter((room)=>room.price <= price);
+    return rooms.filter((room)=>room.price >= price);
   }
 
 }
