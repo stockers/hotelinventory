@@ -1,0 +1,14 @@
+{
+    "/WeatherForecast" : {
+      "target": "http://localhost:8080",
+      "secure": false
+    },
+    "/rooms" : {
+        "target": "http://localhost:8080",
+        "secure": false
+    },
+    "/comments" : {
+      "target": "http://localhost:8080",
+      "secure": false
+  }
+}

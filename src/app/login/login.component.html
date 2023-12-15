@@ -1,0 +1,9 @@
+<p>login works!</p>
+<form>
+    <div class="form-group">
+        <input #inputEmail="ngModel" hinvHover="red" hinvEmailvalidator  type="email" class="form-control" name="email" [(ngModel)]="email" placeholder="enter your email" />
+        <div *ngIf="inputEmail.errors!==null">{{inputEmail.errors | json}}</div>
+        <input hinvHover="blue" type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="enter password" />
+        <button class="btn btn-primary" (click)="login()">Log in</button>
+    </div>
+</form>

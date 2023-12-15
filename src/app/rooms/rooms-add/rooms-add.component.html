@@ -1,0 +1,19 @@
+<p>rooms-add works!</p>
+{{ roomForm.valid | json}}
+<div *ngIf="successMessage !== ''" class="alert alert-success">{{successMessage}}</div>
+<form #roomForm="ngForm" (ngSubmit)="addRoom(roomForm)">
+    <div class="form-group">Type <input [(ngModel)]="this.room.roomType" type="text" name="roomType" class="form-control" placeholder="room type" required/></div>
+    <div class="form-group">Number <input [(ngModel)]="this.room.roomNumber" type="text" name="roomNumber" class="form-control" placeholder="room number" required/></div>
+    <div class="form-group">Amenities <input #roomAmenities="ngModel" [(ngModel)]="this.room.amenities" type="text" name="amenities" class="form-control" placeholder="amenities" required minlength="5" maxlength="50"/></div>
+    <div class="alert alert-warning" *ngIf="roomForm.dirty && roomAmenities.errors?.['minlength']">must be between 5 and 50 characters</div>
+    <div class="alert alert-danger" *ngIf="roomForm.dirty && roomAmenities.errors?.['required']">is mandatory</div>
+
+    <div class="form-group">Price <input [(ngModel)]="this.room.price" type="number" name="price" class="form-control" placeholder="price" required/></div>
+    
+    <div class="form-group">Photo<input [(ngModel)]="this.room.photo" type="text" name="photo" class="form-control" placeholder="photo" required minlength="5" maxlength="50"/></div>
+    
+    <div class="form-group">Check in <input [(ngModel)]="this.room.checkInTime" type="date" name="checkInTime" class="form-control" placeholder="check in time" /></div>
+    <div class="form-group">Check out <input [(ngModel)]="this.room.checkOutTime" type="date" name="checkOutTime" class="form-control" placeholder="check out time" /></div>
+
+    <div class="form-group"><button [disabled]="roomForm.invalid" class="btn btn-primary" type="submit">Submit</button></div>
+</form>
