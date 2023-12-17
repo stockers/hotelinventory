@@ -14,6 +14,7 @@ import { GlobalErrorHandlerService } from './app/services/global.error.handler.s
 
 
 if(environment.production) {
+  console.log("PRODUCTION MODE ENABLED");
   enableProdMode();
 }
 bootstrapApplication(AppComponent, {

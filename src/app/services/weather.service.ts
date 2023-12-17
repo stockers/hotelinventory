@@ -1,7 +1,8 @@
 import { Injectable, SkipSelf } from '@angular/core';
 import { Weather } from './../weather';
-import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,8 +26,8 @@ export class WeatherService {
         summary: "Chilly"
       },      
     ];
-    //console.log(environment.apiEndpoint);
-    return this.http.get<Weather[]>('/WeatherForecast/GetIt');
+    //console.log(environment.apiEndpoint);    
+    return this.http.get<Weather[]>(environment.apiEndpoint + '/WeatherForecast/GetIt');
     
     //return weathers;
   }

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RoomList } from '../Room';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,23 +41,23 @@ export class RoomsService {
     getRooms()  { //: Observable<RoomList[]>
       //return this.roomList;
       const headers = new HttpHeaders({'token':'34857fjh8u9f48f89j', 'x':'y'})
-      return this.http.get<RoomList[]>('/rooms', {headers: headers});
+      return this.http.get<RoomList[]>(environment.apiEndpoint + '/rooms', {headers: headers});
     }
 
     addRoom(room :RoomList) {
-      return this.http.post<RoomList[]>('/rooms',room);
+      return this.http.post<RoomList[]>(environment.apiEndpoint + '/rooms',room);
     }
 
     editRoom(room:RoomList)  {
-      return this.http.put<RoomList[]>('/rooms', room);
+      return this.http.put<RoomList[]>(environment.apiEndpoint + '/rooms', room);
     }
 
     patchRoom(id : number,room:RoomList)  {      
-      return this.http.patch<RoomList[]>(`/rooms/${id}`, room);
+      return this.http.patch<RoomList[]>(environment.apiEndpoint + `/rooms/${id}`, room);
     }
 
     deleteRoom(id : number)  {      
-      return this.http.delete<RoomList[]>(`/rooms/${id}`);
+      return this.http.delete<RoomList[]>(environment.apiEndpoint + `/rooms/${id}`);
     }
 
     getPhotos() {
